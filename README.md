@@ -6,7 +6,7 @@ This project started as a set of free CS fundamentals classes I taught at my fat
 
 ##  Live Site
 
-👉 **[Access the Computer Fundamentals Compendium](https://compendium.vercel.app)**
+👉 **[Access the Computer Fundamentals Compendium](https://compendium-cs.vercel.app)**
 
 ##  Contents
 
