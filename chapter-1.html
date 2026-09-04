@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: Architecture & Hardware — Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: '#FAF7F2', navy: '#0F172A', olive: '#4A5D4E', muted: '#78716C' },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-navy hover:text-olive transition-colors">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy transition-colors">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12 w-full flex-1">
+    <article class="space-y-10">
+      
+      <!-- Title Section -->
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Chapter 1</span>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-navy mt-1 mb-3">Computer Architecture & Hardware Mechanics</h1>
+        <p class="text-muted text-base md:text-lg leading-relaxed">
+          Von Neumann architecture, CPU fetch-decode-execute cycles, system buses, RAM/ROM dynamics, and storage physics.
+        </p>
+      </div>
+
+      <!-- Diagram Section -->
+      <div class="bg-white p-6 md:p-8 rounded-3xl border border-navy/10 shadow-sm flex flex-col items-center">
+        <svg class="w-full max-w-2xl h-auto" viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer Box CPU -->
+          <rect x="10" y="20" width="280" height="230" rx="16" fill="#FAF7F2" stroke="#0F172A" stroke-width="2.5"/>
+          <text x="150" y="48" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="800" font-size="14" text-anchor="middle">CPU (Central Processing Unit)</text>
+          
+          <!-- Control Unit Box -->
+          <rect x="30" y="70" width="110" height="150" rx="12" fill="#FFFFFF" stroke="#4A5D4E" stroke-width="2"/>
+          <text x="85" y="145" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">Control Unit</text>
+          <text x="85" y="163" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">(CU)</text>
+
+          <!-- ALU Box -->
+          <rect x="160" y="70" width="110" height="150" rx="12" fill="#FFFFFF" stroke="#4A5D4E" stroke-width="2"/>
+          <text x="215" y="145" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">ALU &amp;</text>
+          <text x="215" y="163" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">Registers</text>
+
+          <!-- System Buses -->
+          <!-- Control Bus -->
+          <line x1="290" y1="90" x2="410" y2="90" stroke="#78716C" stroke-width="2.5"/>
+          <text x="350" y="82" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="11" text-anchor="middle">Control Bus</text>
+
+          <!-- Address Bus -->
+          <line x1="290" y1="135" x2="410" y2="135" stroke="#0F172A" stroke-width="2.5"/>
+          <text x="350" y="127" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="11" text-anchor="middle">Address Bus</text>
+
+          <!-- Data Bus -->
+          <line x1="290" y1="180" x2="410" y2="180" stroke="#4A5D4E" stroke-width="2.5"/>
+          <text x="350" y="172" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="11" text-anchor="middle">Data Bus (Bi-directional)</text>
+
+          <!-- Outer Box Main Memory -->
+          <rect x="410" y="20" width="280" height="230" rx="16" fill="#FAF7F2" stroke="#0F172A" stroke-width="2.5"/>
+          <text x="550" y="48" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="800" font-size="14" text-anchor="middle">Main Memory (RAM / ROM)</text>
+          
+          <!-- Memory Inner Box -->
+          <rect x="435" y="70" width="230" height="150" rx="12" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+          <text x="550" y="152" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">Addressable Memory Cells</text>
+        </svg>
+        <p class="text-xs text-muted mt-4 font-medium">Diagram 1.1: Von Neumann System Architecture &amp; Interconnecting Bus Fabric</p>
+      </div>
+
+      <!-- 1.1 What is a Computer -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">1.1 What Exactly Is a Computer?</h2>
+        <p>
+          A computer is an electronic machine that takes in raw facts (<strong>Input</strong>), processes them according to a set of instructions (<strong>Processing</strong>), and produces meaningful results (<strong>Output</strong>) — while also being able to remember data for later (<strong>Storage</strong>). This is called the <strong>IPOS Cycle</strong>.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center font-mono text-xs pt-2">
+          <div class="bg-cream p-4 rounded-xl border border-navy/5"><span class="block font-bold text-navy mb-1">INPUT</span>Keyboard, Mouse, Scanner, Mic</div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5"><span class="block font-bold text-navy mb-1">PROCESS</span>CPU calculates &amp; decides</div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5"><span class="block font-bold text-navy mb-1">OUTPUT</span>Monitor, Printer, Speaker</div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5"><span class="block font-bold text-navy mb-1">STORAGE</span>SSD, HDD, Pen Drive</div>
+        </div>
+        <p class="text-xs">
+          Think of it like cooking: raw vegetables (input) go to the cook (processor), who follows a recipe (program/instructions), and a finished dish (output) comes out — while some ingredients stay in the fridge for later use (storage).
+        </p>
+      </div>
+
+      <!-- 1.2 Fetch Decode Execute -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">1.2 The Fetch–Decode–Execute Cycle</h2>
+        <p>
+          Every single instruction a computer runs — from opening an app to adding two numbers — passes through the same three-stage cycle, repeated billions of times per second (measured in <strong>GHz</strong>, or billions of cycles per second):
+        </p>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li><strong>Fetch:</strong> The Control Unit (CU) retrieves the next instruction from RAM using the address stored in the <strong>Program Counter (PC)</strong>, and loads it into the <strong>Instruction Register (IR)</strong>.</li>
+          <li><strong>Decode:</strong> The CU translates the binary instruction into a set of electrical control signals — figuring out what operation to perform and which data it needs.</li>
+          <li><strong>Execute:</strong> The <strong>ALU</strong> (Arithmetic Logic Unit) actually performs the operation — an addition, comparison, or data move — and results are written back to a register or memory.</li>
+        </ol>
+        <div class="py-4 flex flex-col items-center">
+          <svg class="w-full max-w-md h-auto" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="55" width="130" height="60" rx="12" fill="#0F172A"/>
+            <text x="75" y="90" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">FETCH</text>
+            <path d="M145 85 L185 85" stroke="#78716C" stroke-width="2.5" marker-end="url(#arrow1)"/>
+            <rect x="190" y="55" width="130" height="60" rx="12" fill="#4A5D4E"/>
+            <text x="255" y="90" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">DECODE</text>
+            <path d="M325 85 L365 85" stroke="#78716C" stroke-width="2.5" marker-end="url(#arrow1)"/>
+            <rect x="370" y="55" width="130" height="60" rx="12" fill="#6B8E23"/>
+            <text x="435" y="90" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="13" text-anchor="middle">EXECUTE</text>
+            <path d="M435 115 C 435 150, 75 150, 75 115" stroke="#78716C" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow1)"/>
+            <defs>
+              <marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#78716C"/></marker>
+            </defs>
+          </svg>
+          <p class="text-xs text-muted mt-3 font-medium">Diagram 1.2: The Fetch–Decode–Execute Cycle repeats continuously while power is on</p>
+        </div>
+      </div>
+
+      <!-- 1.3 Memory Hierarchy -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">1.3 Memory Hierarchy: Registers, Cache, RAM &amp; ROM</h2>
+        <p>Not all memory is equal — computers use a layered hierarchy, trading off speed against size and cost:</p>
+        <div class="py-4 flex flex-col items-center">
+          <svg class="w-full max-w-sm h-auto" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="200,10 260,50 140,50" fill="#0F172A"/>
+            <text x="200" y="38" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">Registers</text>
+            <polygon points="140,55 260,55 290,100 110,100" fill="#4A5D4E"/>
+            <text x="200" y="82" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="11" text-anchor="middle">Cache (L1-L3)</text>
+            <polygon points="110,105 290,105 320,150 80,150" fill="#6B8E23"/>
+            <text x="200" y="132" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="11" text-anchor="middle">RAM (Main Memory)</text>
+            <polygon points="80,155 320,155 350,200 50,200" fill="#78716C"/>
+            <text x="200" y="182" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="11" text-anchor="middle">Storage (SSD / HDD)</text>
+          </svg>
+          <p class="text-xs text-muted mt-3 font-medium">Diagram 1.3: Fastest &amp; smallest memory at the top, slowest &amp; largest at the bottom</p>
+        </div>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Registers:</strong> Tiny storage slots built directly inside the CPU, holding data currently being worked on. Fastest of all, but only a handful exist.</li>
+          <li><strong>Cache (L1/L2/L3):</strong> A small, ultra-fast memory pool that stores frequently used data close to the CPU so it doesn't have to keep asking slower RAM.</li>
+          <li><strong>RAM (Random Access Memory):</strong> <em>Volatile</em> memory — it holds running programs and data only while powered on, and is erased when the computer shuts down.</li>
+          <li><strong>ROM (Read-Only Memory):</strong> <em>Non-volatile</em> memory that permanently stores the startup instructions (firmware/BIOS) needed to boot the computer, even without power.</li>
+        </ul>
+      </div>
+
+      <!-- 1.4 Storage Devices -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">1.4 Secondary Storage: HDD vs. SSD</h2>
+        <p>Secondary storage keeps data permanently, even when the power is off, unlike RAM.</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Hard Disk Drive (HDD):</strong> Uses spinning magnetic platters and a moving read/write head — mechanical, cheaper per gigabyte, but slower and more fragile due to moving parts.</li>
+          <li><strong>Solid State Drive (SSD):</strong> Uses NAND flash memory chips with no moving parts — much faster, more durable, and energy-efficient, though historically more expensive per gigabyte.</li>
+        </ul>
+        <p class="text-xs">Quick analogy: an HDD is like a record player needle physically moving across a vinyl disc; an SSD is like flipping a switch — instant, with nothing to move.</p>
+      </div>
+
+      <!-- Nepali Helper Box -->
+      <div class="bg-navy text-cream p-8 rounded-2xl shadow-md border-l-8 border-olive space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Bilingual Conceptual Summary (नेपाली)</span>
+        <p class="text-sm leading-relaxed">
+          <strong>CPU र Memory को सजिलो व्याख्या:</strong><br> <br>
+          • <strong>CPU (सेन्ट्रल प्रोसेसिङ युनिट):</strong> यो कम्प्युटरको दिमाग हो। यसले Fetch (ल्याउने), Decode (बुझ्ने), र Execute (गर्ने) गरी हरेक निर्देशन पालना गर्छ।<br> <br>
+          • <strong>RAM vs ROM:</strong> RAM ले कम्प्युटर चलिरहेको बेला मात्र डाटा राख्छ (पावर निस्किए मेटिन्छ), तर ROM मा भएको डाटा पावर नभए पनि सधैं रहन्छ (जस्तै BIOS)।<br> <br>
+          • <strong>HDD vs SSD:</strong> HDD घुम्ने डिस्क भएको पुरानो, अलि ढिलो स्टोरेज हो; SSD मा घुम्ने पार्ट्स नभएकोले यो धेरै छिटो र बलियो हुन्छ।
+        </p>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+    © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>

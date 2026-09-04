@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 6: Cyber Security & Digital Literacy — Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: '#FAF7F2', navy: '#0F172A', olive: '#4A5D4E', muted: '#78716C' },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-muted hover:text-navy">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 w-full">
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-navy mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Back to all chapters
+    </a>
+
+    <div class="border-b border-navy/10 pb-8 mb-10">
+      <span class="px-3 py-1 rounded-full bg-navy text-cream text-xs font-bold">Chapter 06</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-navy mt-4 mb-2">Cyber Security, Encryption & Ethics</h1>
+      <p class="text-muted">Malware taxonomy, Cryptography, 2FA/TOTP protocols, Digital Citizenship, and Ergonomic engineering.</p>
+    </div>
+
+    <div class="space-y-10">
+      
+      <!-- Threat & Defense Diagram -->
+      <div class="bg-white p-6 rounded-2xl border border-navy/10 shadow-sm text-center">
+        <div class="max-w-lg mx-auto border-2 border-dashed border-navy/20 p-6 rounded-xl space-y-4">
+          <span class="text-xs font-bold text-navy uppercase tracking-wider block">Defense-in-Depth Security Framework</span>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
+            <div class="bg-red-50 text-red-800 p-2 rounded border border-red-200">Perimeter: Hardware Firewall</div>
+            <div class="bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-200">Identity: 2FA & TOTP</div>
+            <div class="bg-green-50 text-green-800 p-2 rounded border border-green-200">Data: AES-256 Encryption</div>
+          </div>
+        </div>
+        <p class="text-xs text-muted font-semibold mt-4">Diagram 6.1: Multi-Layered Cyber Security Defense Infrastructure</p>
+      </div>
+
+      <!-- Core Content -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">6.1 Malware Taxonomy</h2>
+        <p>Malicious Software (Malware) encompasses any unauthorized code designed to compromise system integrity:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Viruses:</strong> Code attached to host executable files that replicates across system drives when executed.</li>
+          <li><strong>Worms:</strong> Standalone programs that actively self-replicate across network vulnerabilities without human execution.</li>
+          <li><strong>Trojans:</strong> Malicious software masquerading as legitimate software (e.g., crack tools, fake utilities).</li>
+          <li><strong>Ransomware:</strong> Cryptographic malware that encrypts files on a drive and demands payment for decryption keys.</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-navy pt-4">6.2 Security Mechanisms: Encryption & 2FA</h2>
+        <p>Data protection relies on mathematical cryptographic standards:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Symmetric Encryption:</strong> Uses a single secret key for encryption and decryption (e.g., AES-256). Fast and suited for bulk disk encryption.</li>
+          <li><strong>Asymmetric Encryption:</strong> Uses a mathematically linked Key Pair (Public Key encrypts, Private Key decrypts). Used in RSA and ECC for web handshakes.</li>
+          <li><strong>Two-Factor Authentication (2FA):</strong> Combines something you know (Password) with something you have (Time-based One-Time Password via Authenticator App).</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-navy pt-4">6.3 Digital Ethics, Ergonomics & E-Waste</h2>
+        <p>Responsible computing extends to physical safety, legal compliance, and environmental stewardship:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Plagiarism & Intellectual Property:</strong> Unauthorized reproduction of code, text, or creative media violates copyright laws. All sources must be cited.</li>
+          <li><strong>Ergonomics:</strong> Engineering the workspace to prevent physical strain. Displays should sit at eye level, keyboards at elbow height, and breaks taken to avoid Repetitive Strain Injury (RSI).</li>
+          <li><strong>E-Waste Management:</strong> Electronics contain hazardous heavy metals (lead, mercury, cadmium). E-waste must be routed to specialized recycling facilities to prevent toxic environmental leakage.</li>
+        </ul>
+      </div>
+
+      <!-- 6.4 Social Engineering -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">6.4 Social Engineering: Hacking the Human</h2>
+        <p>
+          Not all attacks target machines — many target people, tricking them into giving up sensitive information voluntarily:
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Phishing:</strong> Fraudulent emails or messages pretending to be from a trusted source (like a bank), tricking victims into clicking malicious links or entering credentials.</li>
+          <li><strong>Smishing / Vishing:</strong> The same trick performed via SMS text messages ("smishing") or phone calls ("vishing").</li>
+          <li><strong>Pretexting:</strong> An attacker invents a false scenario ("I'm from IT support, I need your password to fix your account") to gain trust.</li>
+          <li><strong>Shoulder Surfing:</strong> Simply watching someone type their PIN or password over their shoulder.</li>
+        </ul>
+        <p class="text-xs">Golden rule: legitimate organizations will never ask for your password over email, SMS, or phone call.</p>
+      </div>
+
+      <!-- 6.5 Password hygiene & backups -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">6.5 Password Hygiene, VPNs &amp; Backups</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Strong Passwords:</strong> Should be long (12+ characters), mix upper/lowercase letters, numbers, and symbols, and never reused across multiple sites.</li>
+          <li><strong>Password Managers:</strong> Software that securely generates and stores unique passwords for every account, so you only need to remember one master password.</li>
+          <li><strong>VPN (Virtual Private Network):</strong> Encrypts your internet traffic and routes it through a secure remote server, hiding your activity from your local network — useful on public Wi-Fi.</li>
+          <li><strong>Backups (3-2-1 Rule):</strong> Keep <strong>3</strong> copies of important data, on <strong>2</strong> different storage types (e.g., laptop + external drive), with <strong>1</strong> copy stored off-site or in the cloud — this protects against ransomware and hardware failure.</li>
+        </ul>
+      </div>
+
+      <!-- Nepali Helper Box -->
+      <div class="bg-navy text-cream p-8 rounded-2xl shadow-md border-l-8 border-olive space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Bilingual Conceptual Summary (नेपाली)</span>
+        <p class="text-sm leading-relaxed">
+          <strong>2FA र Phishing बाट बच्ने उपाय:</strong><br> <br>
+          • <strong>Phishing (फिसिङ):</strong> नक्कली इमेल वा वेबसाइट पठाएर पासवर्ड चोर्ने प्रविधि हो। लिङ्क थिच्नु अघि URL चेक गर्नुपर्छ।<br> <br>
+          • <strong>Ergonomics (कम्प्युटर प्रयोग गर्दाको आसन):</strong> निरन्तर कम्प्युटर चलाउँदा ढाड र आँखा दुख्ने समस्याबाट बच्न २०-२०-२० नियम (हरेक २० मिनेटमा २० फिट टाढा २० सेकेन्ड हेर्ने) पालना गर्नुपर्छ।<br> <br>
+          • <strong>Backup (सुरक्षित प्रति):</strong> महत्त्वपूर्ण फाइलहरूको ३ प्रति बनाउनुहोस् — २ फरक ठाउँमा (जस्तै कम्प्युटर र Pendrive) र १ प्रति टाढाको ठाउँ (Cloud) मा राख्नुहोस्, ताकि कुनै एक बिग्रिए पनि डाटा नहराओस्।
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+    © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>

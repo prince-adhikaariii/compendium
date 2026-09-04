@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Fundamentals — Grade 8 to 10 Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            navy: '#0F172A',
+            olive: '#4A5D4E',
+            oliveLight: '#6B8E23',
+            muted: '#78716C'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors duration-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-navy hover:text-olive transition-colors">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy transition-colors">About Author</a>
+        <a href="chapter-1.html" class="text-sm font-semibold px-5 py-2.5 rounded-xl bg-olive text-cream hover:bg-navy transition-all duration-300 shadow-md hover:shadow-lg">Start Learning</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="max-w-7xl mx-auto px-6 py-16 w-full">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive text-xs font-bold uppercase tracking-wider mb-4">Grade 8 – 10 Computer Curriculum</span>
+      <h1 class="text-5xl md:text-6xl font-extrabold text-navy tracking-tight leading-tight mb-6">Computer Fundamentals Portal</h1>
+      <p class="text-lg text-muted leading-relaxed">Textbook-grade lessons, interactive simulators, bilingual Nepali context boxes, and structured diagrams built to transition students from basic concepts to near-advanced computer science.</p>
+    </div>
+
+    <!-- 7 Chapter Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Chapter 1 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-olive/10 text-olive">Hardware</span>
+            <span class="text-xs text-muted font-semibold">30 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">1. System Architecture</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">Motherboards, Fetch-Decode-Execute CPU cycles, ALU vs. CU, L1-L3 Cache, System Buses, RAM/ROM dynamics, and SSD flash memory vs. HDD platters.</p>
+        </div>
+        <a href="chapter-1.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 1</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <!-- Chapter 2 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-navy/10 text-navy">Software</span>
+            <span class="text-xs text-muted font-semibold">25 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">2. Software & OS</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">System software architecture, Kernel functions, Process Scheduling, Virtual Memory Paging, File Systems (NTFS/ext4), and Open-Source licensing.</p>
+        </div>
+        <a href="chapter-2.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 2</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <!-- Chapter 3 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-olive/10 text-olive">Mathematics</span>
+            <span class="text-xs text-muted font-semibold">35 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">3. Data Representation</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">Bit structures, positional number system conversions, 2's Complement signed integers, fixed/floating point data, and ASCII vs. UTF-8 encodings.</p>
+        </div>
+        <a href="chapter-3.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 3</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <!-- Chapter 4 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-navy/10 text-navy">Networking</span>
+            <span class="text-xs text-muted font-semibold">35 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">4. Networks & Internet</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">OSI 7-Layer Model vs. TCP/IP, topologies, packet switching, IPv4 subnetting vs IPv6, DNS resolution, and TLS/HTTPS encryption handshakes.</p>
+        </div>
+        <a href="chapter-4.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 4</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <!-- Chapter 5 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-olive/10 text-olive">Logic & Engineering</span>
+            <span class="text-xs text-muted font-semibold">45 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">5. Logic Gates & System Modeling</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">Complete Gate Definitions (AND, OR, NOT, NAND, NOR, XOR, XNOR), Truth Tables, Real-time Simulators, Combinational Circuits (Half-Adder), Data Flow Diagrams (DFDs), and Algorithms.</p>
+        </div>
+        <a href="chapter-5.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 5</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <!-- Chapter 6 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-navy/10 text-navy">Security</span>
+            <span class="text-xs text-muted font-semibold">25 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">6. Cyber Security</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">Malware taxonomy, Firewalls, Symmetric vs Asymmetric Cryptography, 2FA/TOTP protocols, Social Engineering defense, Ethics, and Ergonomics.</p>
+        </div>
+        <a href="chapter-6.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 6</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+      <!-- Chapter 7 -->
+      <div class="bg-white rounded-2xl p-8 border border-navy/5 hover:border-olive/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-olive/10 text-olive">System Software</span>
+            <span class="text-xs text-muted font-semibold">30 Min Read</span>
+          </div>
+          <h3 class="text-2xl font-bold text-navy group-hover:text-olive transition-colors mb-3">7. Operating Systems & Software</h3>
+          <p class="text-muted text-sm leading-relaxed mb-6">Kernel architecture, Process Scheduling algorithms, Virtual Memory management, System Call APIs, Device Drivers, and user-space interactions.</p>
+        </div>
+        <a href="chapter-7.html" class="inline-flex items-center justify-between pt-4 border-t border-navy/5 font-bold text-sm text-navy group-hover:text-olive transition-colors">
+          <span>Read Chapter 7</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+    © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 7: Operating Systems & System Software — Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: '#FAF7F2', navy: '#0F172A', olive: '#4A5D4E', muted: '#78716C' },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-navy hover:text-olive transition-colors">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy transition-colors">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12 w-full flex-1">
+    <article class="space-y-10">
+      
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Chapter 7</span>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-navy mt-1 mb-3">Operating Systems &amp; System Software</h1>
+        <p class="text-muted text-base md:text-lg leading-relaxed">
+          Kernel architecture, process scheduling, virtual memory management, system calls, and device drivers.
+        </p>
+      </div>
+
+      <!-- Content Box -->
+      <div class="bg-white p-8 rounded-3xl border border-navy/10 shadow-sm space-y-6 text-stone-800 leading-relaxed">
+        <h2 class="text-xl font-bold text-navy">7.1 The Role of the OS Kernel</h2>
+        <p class="text-sm md:text-base text-muted">
+          The kernel operates at the core of any operating system, bridging the gap between application software and physical hardware resources. It manages process execution, memory allocation, and hardware device communication.
+        </p>
+
+        <!-- OS Diagram -->
+        <div class="py-4 flex flex-col items-center">
+          <svg class="w-full max-w-md h-auto" viewBox="0 0 500 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="480" height="35" rx="8" fill="#0F172A"/>
+            <text x="250" y="32" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="12" text-anchor="middle">User Space Applications</text>
+            
+            <rect x="10" y="60" width="480" height="35" rx="8" fill="#4A5D4E"/>
+            <text x="250" y="82" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="12" text-anchor="middle">System Call Interface (API)</text>
+            
+            <rect x="10" y="110" width="480" height="35" rx="8" fill="#FAF7F2" stroke="#0F172A" stroke-width="2"/>
+            <text x="250" y="132" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="12" text-anchor="middle">Kernel Space (Memory, Process, Storage Management)</text>
+
+            <rect x="10" y="160" width="480" height="30" rx="8" fill="#78716C"/>
+            <text x="250" y="180" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="12" text-anchor="middle">Hardware Layer (CPU, RAM, Disks)</text>
+          </svg>
+          <p class="text-xs text-muted mt-3 font-medium">Diagram 7.1: Operating System Layering Model</p>
+        </div>
+      </div>
+
+      <!-- 7.2 Scheduling Algorithms -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/10 shadow-sm space-y-6 text-stone-800 leading-relaxed">
+        <h2 class="text-xl font-bold text-navy">7.2 CPU Scheduling Algorithms</h2>
+        <p class="text-sm md:text-base text-muted">
+          When multiple processes are "Ready" and waiting, the OS scheduler must decide which one runs next. Common algorithms include:
+        </p>
+        <ul class="list-disc pl-5 space-y-2 text-sm text-muted">
+          <li><strong>First-Come, First-Served (FCFS):</strong> Processes are executed strictly in the order they arrive — simple, but a long process can delay everyone behind it.</li>
+          <li><strong>Shortest Job First (SJF):</strong> The process with the smallest estimated run-time is executed next, minimizing average waiting time.</li>
+          <li><strong>Round Robin (RR):</strong> Every process gets a small fixed <strong>time slice (quantum)</strong> — e.g. 20 milliseconds — before being moved to the back of the queue, creating fair, responsive multitasking. This is what most desktop and phone OSes use.</li>
+          <li><strong>Priority Scheduling:</strong> Each process is assigned a priority number; higher-priority processes (like playing audio) jump ahead of lower-priority background tasks.</li>
+        </ul>
+      </div>
+
+      <!-- 7.3 Virtual Memory & Device Drivers -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/10 shadow-sm space-y-6 text-stone-800 leading-relaxed">
+        <h2 class="text-xl font-bold text-navy">7.3 Virtual Memory Management Recap</h2>
+        <p class="text-sm md:text-base text-muted">
+          The kernel's Memory Manager gives each running program its own private virtual address space, translated to physical RAM addresses via page tables (see Chapter 2 for full details). This isolation is also a security feature — one buggy or malicious program cannot directly read or corrupt another program's memory.
+        </p>
+        <h2 class="text-xl font-bold text-navy pt-4">7.4 System Calls &amp; Device Drivers</h2>
+        <p class="text-sm md:text-base text-muted">
+          Applications in User Space cannot touch hardware directly for safety reasons. Instead, they request kernel services through <strong>System Calls</strong> — standardized functions like <code>open()</code>, <code>read()</code>, or <code>write()</code>. The kernel then talks to hardware through <strong>Device Drivers</strong>: small pieces of software written specifically for each hardware component (a printer, graphics card, or Wi-Fi chip) that translate generic OS commands into device-specific instructions.
+        </p>
+      </div>
+
+      <!-- Nepali Helper Box -->
+      <div class="bg-navy text-cream p-8 rounded-2xl shadow-md border-l-8 border-olive space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Bilingual Conceptual Summary (नेपाली)</span>
+        <p class="text-sm leading-relaxed">
+          <strong>Scheduling र Device Driver:</strong><br> <br>
+          • <strong>Round Robin Scheduling:</strong> प्रत्येक प्रोग्रामलाई एक-एक पालो छोटो समय (जस्तै 20 मिलिसेकेन्ड) दिइन्छ, त्यसपछि अर्को प्रोग्रामको पालो आउँछ — यसैले सबै प्रोग्राम एकैसाथ चलिरहेको जस्तो महसुस हुन्छ।<br> <br>
+          • <strong>Device Driver:</strong> यो सानो सफ्टवेयर हो जसले OS र प्रिन्टर, ग्राफिक्स कार्ड जस्ता हार्डवेयरबीच सञ्चार गराउँछ। ड्राइभर नभई हार्डवेयरले काम गर्दैन।
+        </p>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+    © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>

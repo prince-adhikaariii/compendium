@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 4: Computer Networking & Web Architecture — Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: '#FAF7F2', navy: '#0F172A', olive: '#4A5D4E', muted: '#78716C' },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-muted hover:text-navy">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 w-full">
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-navy mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Back to all chapters
+    </a>
+
+    <div class="border-b border-navy/10 pb-8 mb-10">
+      <span class="px-3 py-1 rounded-full bg-navy text-cream text-xs font-bold">Chapter 04</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-navy mt-4 mb-2">Networking Protocols & Web Architecture</h1>
+      <p class="text-muted">OSI 7-Layer model, TCP/IP, IP addressing, DNS resolution, and TLS/HTTPS handshakes.</p>
+    </div>
+
+    <div class="space-y-10">
+      
+      <!-- OSI Diagram -->
+      <div class="bg-white p-6 rounded-2xl border border-navy/10 shadow-sm text-center">
+        <div class="grid grid-cols-1 md:grid-cols-7 gap-2 font-mono text-[11px] text-cream">
+          <div class="bg-navy p-3 rounded">7. Application (HTTP/DNS)</div>
+          <div class="bg-navy/90 p-3 rounded">6. Presentation (SSL/TLS)</div>
+          <div class="bg-navy/80 p-3 rounded">5. Session (Sockets)</div>
+          <div class="bg-olive p-3 rounded">4. Transport (TCP/UDP)</div>
+          <div class="bg-olive/90 p-3 rounded">3. Network (IP/ICMP)</div>
+          <div class="bg-stone-600 p-3 rounded">2. Data Link (Ethernet)</div>
+          <div class="bg-stone-700 p-3 rounded">1. Physical (Fiber/Copper)</div>
+        </div>
+        <p class="text-xs text-muted font-semibold mt-4">Diagram 4.1: The OSI Reference Model Architectural Stack</p>
+      </div>
+
+      <!-- Core Content -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">4.1 Network Classifications & Topologies</h2>
+        <p>Networks are categorized by geographic scale (<strong>LAN</strong> = local, <strong>MAN</strong> = city, <strong>WAN</strong> = global) and layout topology:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Star Topology:</strong> All devices connect to a central Switch/Hub. Failure of one cable does not crash the network, making it the modern standard.</li>
+          <li><strong>Bus Topology:</strong> Single central coaxial backbone wire. Terminators are required at ends; prone to collisions.</li>
+          <li><strong>Mesh Topology:</strong> Every node has redundant links to every other node, providing maximum fault tolerance for core infrastructure.</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-navy pt-4">4.2 Addressing: IPv4 vs. IPv6</h2>
+        <p>Every internet-connected device requires a unique logical address:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>IPv4:</strong> 32-bit addresses written in dotted-decimal format (e.g., <code>192.168.1.100</code>). Provides $2^{32} \approx 4.3$ billion addresses, leading to global exhaustion.</li>
+          <li><strong>IPv6:</strong> 128-bit hexadecimal addressing (e.g., <code>2001:0db8:85a3::8a2e:0370:7334</code>). Provides $2^{128}$ addresses, virtually eliminating address scarcity.</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-navy pt-4">4.3 Web Navigation Flow: DNS & HTTPS</h2>
+        <p>When typing <code>https://example.com</code> into a browser, the following sequential process occurs:</p>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li><strong>DNS Lookup:</strong> Browser requests the Domain Name System (DNS) recursive resolver to resolve the human-readable domain into a numerical IP address.</li>
+          <li><strong>TCP 3-Way Handshake:</strong> Client and server exchange <code>SYN</code>, <code>SYN-ACK</code>, and <code>ACK</code> packets to establish a stable connection socket.</li>
+          <li><strong>TLS Handshake:</strong> Cryptographic keys are securely exchanged via HTTPS to establish an encrypted tunnel.</li>
+          <li><strong>HTTP GET Request:</strong> Client sends an encrypted HTTP request; the server responds with HTML/CSS data blocks.</li>
+        </ol>
+      </div>
+
+      <!-- 4.4 Networking Hardware -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">4.4 Core Networking Hardware Devices</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Modem (Modulator-Demodulator):</strong> Converts digital signals from your devices into analog signals suitable for phone/cable lines (and back), connecting your home network to the wider Internet Service Provider (ISP).</li>
+          <li><strong>Router:</strong> Directs data packets between different networks, deciding the best path for traffic to travel from your device to the Internet and back — it also usually assigns local IP addresses via DHCP.</li>
+          <li><strong>Switch:</strong> Connects multiple devices within the same local network (LAN), forwarding data only to the specific device it's addressed to (unlike a Hub, which broadcasts to everyone).</li>
+          <li><strong>Access Point (AP):</strong> Extends a wired network to allow Wi-Fi (wireless) connections for laptops and phones.</li>
+        </ul>
+        <div class="py-4 flex flex-col items-center">
+          <svg class="w-full max-w-md h-auto" viewBox="0 0 500 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="45" width="90" height="50" rx="10" fill="#78716C"/>
+            <text x="55" y="75" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">Internet</text>
+            <path d="M102 70 L138 70" stroke="#78716C" stroke-width="2" marker-end="url(#a4)"/>
+            <rect x="140" y="45" width="90" height="50" rx="10" fill="#0F172A"/>
+            <text x="185" y="75" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">Modem</text>
+            <path d="M232 70 L268 70" stroke="#78716C" stroke-width="2" marker-end="url(#a4)"/>
+            <rect x="270" y="45" width="90" height="50" rx="10" fill="#4A5D4E"/>
+            <text x="315" y="75" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">Router</text>
+            <path d="M362 70 L398 70" stroke="#78716C" stroke-width="2" marker-end="url(#a4)"/>
+            <rect x="400" y="10" width="90" height="40" rx="10" fill="#6B8E23"/>
+            <text x="445" y="35" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" text-anchor="middle">Wi-Fi Devices</text>
+            <rect x="400" y="80" width="90" height="40" rx="10" fill="#6B8E23"/>
+            <text x="445" y="105" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" text-anchor="middle">Wired PCs (Switch)</text>
+            <path d="M362 70 L400 30" stroke="#78716C" stroke-width="2" marker-end="url(#a4)"/>
+            <path d="M362 70 L400 100" stroke="#78716C" stroke-width="2" marker-end="url(#a4)"/>
+            <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#78716C"/></marker></defs>
+          </svg>
+          <p class="text-xs text-muted mt-3 font-medium">Diagram 4.2: A typical school/home network path from the Internet to your device</p>
+        </div>
+      </div>
+
+      <!-- 4.5 Common Protocols Table -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">4.5 Common Protocols &amp; Their Purpose</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-mono border border-navy/10">
+            <tr class="bg-cream text-navy font-bold"><th class="p-2 border">Protocol</th><th class="p-2 border">Purpose</th></tr>
+            <tr><td class="p-2 border">HTTP/HTTPS</td><td class="p-2 border">Loading web pages (Hypertext Transfer Protocol, Secure)</td></tr>
+            <tr><td class="p-2 border">FTP</td><td class="p-2 border">Transferring files between computers</td></tr>
+            <tr><td class="p-2 border">SMTP / IMAP</td><td class="p-2 border">Sending and receiving email</td></tr>
+            <tr><td class="p-2 border">DHCP</td><td class="p-2 border">Automatically assigning IP addresses on a local network</td></tr>
+            <tr><td class="p-2 border">TCP</td><td class="p-2 border">Reliable, ordered delivery of data (used for web, email)</td></tr>
+            <tr><td class="p-2 border">UDP</td><td class="p-2 border">Fast, connectionless delivery (used for video calls, gaming)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Nepali Helper Box -->
+      <div class="bg-navy text-cream p-8 rounded-2xl shadow-md border-l-8 border-olive space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Bilingual Conceptual Summary (नेपाली)</span>
+        <p class="text-sm leading-relaxed">
+          <strong>DNS र HTTPS सुरक्षा:</strong><br> <br>
+          • <strong>DNS (नेम सर्भर):</strong> जसरी फोनमा नाम थिच्दा अटोमेटिक फोन नम्बर डायल हुन्छ, त्यसै गरी DNS ले Domain (google.com) लाई IP Address (142.250.183.206) मा रूपान्तरण गर्छ।<br> <br>
+          • <strong>HTTP vs HTTPS:</strong> HTTPS मा प्रयोग हुने TLS Encrypted Shield ले बिचमा कसैलाई पनि (Hacker) तपाईंको पासवर्ड वा डाटा हेर्न दिँदैन।<br> <br>
+          • <strong>Router vs Switch:</strong> Router ले घरको इन्टरनेटलाई बाहिरी संसारसँग जोड्छ, जबकि Switch ले एउटै घर/स्कुल भित्रका धेरै कम्प्युटरहरूलाई आपसमा जोड्छ।
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+     © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>

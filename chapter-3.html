@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 3: Data Representation & Base Mathematics — Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: '#FAF7F2', navy: '#0F172A', olive: '#4A5D4E', muted: '#78716C' },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-muted hover:text-navy">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 w-full">
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-navy mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Back to all chapters
+    </a>
+
+    <div class="border-b border-navy/10 pb-8 mb-10">
+      <span class="px-3 py-1 rounded-full bg-olive text-cream text-xs font-bold">Chapter 03</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-navy mt-4 mb-2">Data Representation & Base Mathematics</h1>
+      <p class="text-muted">Binary/Hex conversions, 2's Complement signed representation, and character encoding standards.</p>
+    </div>
+
+    <div class="space-y-10">
+      
+      <!-- Interactive Base Converter -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/10 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold text-navy">Interactive Real-Time Base Converter</h2>
+          <span class="text-xs bg-olive/10 text-olive px-3 py-1 rounded-full font-bold">Live Calculator</span>
+        </div>
+        <p class="text-xs text-muted">Enter any decimal integer to evaluate its positional representation across multiple bases:</p>
+        
+        <input id="decInput" type="number" value="156" placeholder="Enter Decimal Number" class="w-full p-3 rounded-xl border border-navy/20 focus:outline-none focus:border-olive font-mono text-navy font-bold" oninput="convertNumber()" />
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-center font-mono">
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">BINARY (BASE 2)</span>
+            <span id="binOut" class="text-lg font-bold text-navy">10011100</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">HEXADECIMAL (BASE 16)</span>
+            <span id="hexOut" class="text-lg font-bold text-navy">9C</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">OCTAL (BASE 8)</span>
+            <span id="octOut" class="text-lg font-bold text-navy">234</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Content -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">3.1 Positional Number Systems</h2>
+        <p>
+          Computers operate on binary physical states (high/low voltages represented as 1 and 0). Data interpretation depends on positional base mathematics where a digit at position $n$ carries a weight of $\text{Base}^n$.
+        </p>
+
+        <h3 class="text-lg font-bold text-navy">Step-by-Step Conversion: Decimal to Binary (Successive Division)</h3>
+        <p>To convert Decimal 25 to Binary, repeatedly divide by 2 and collect the remainders in reverse order:</p>
+        <div class="bg-cream p-4 rounded-xl font-mono text-xs text-navy space-y-1">
+          <p>25 ÷ 2 = 12, Remainder = 1 (LSB)</p>
+          <p>12 ÷ 2 =  6, Remainder = 0</p>
+          <p> 6 ÷ 2 =  3, Remainder = 0</p>
+          <p> 3 ÷ 2 =  1, Remainder = 1</p>
+          <p> 1 ÷ 2 =  0, Remainder = 1 (MSB)</p>
+          <p class="font-bold text-olive pt-2">Result (Read bottom to top): 11001₂</p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-navy pt-4">3.2 Signed Integer Representation: 2's Complement</h2>
+        <p>
+          To represent negative numbers without requiring separate subtractive circuit hardware, CPUs use <strong>Two's Complement</strong>. To negate a binary number:
+        </p>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>Start with the positive binary value (e.g., $+5$ in 8-bit = <code>00000101</code>).</li>
+          <li>Invert all bits (1's Complement: <code>11111010</code>).</li>
+          <li>Add $1$ to the LSB (2's Complement: <code>11111011</code> = $-5$).</li>
+        </ol>
+
+        <h2 class="text-2xl font-bold text-navy pt-4">3.3 Character Encoding Standards: ASCII vs. Unicode</h2>
+        <p>Text values are represented using standard numeric encoding maps:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>ASCII (American Standard Code for Information Interchange):</strong> 7-bit code mapping 128 standard English characters, control codes, and numbers (e.g., 'A' = 65 / <code>01000001₂</code>).</li>
+          <li><strong>Unicode (UTF-8 / UTF-16):</strong> Variable-width encoding supporting over 140,000 global characters, including Devanagari (Nepali script) and emojis, maintaining backward compatibility with ASCII.</li>
+        </ul>
+      </div>
+
+      <!-- 3.4 Binary to Decimal example -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">3.4 Reading Binary: From Bits Back to Decimal</h2>
+        <p>Going the other way, each binary digit (bit) is worth a power of 2 based on its position, counting from the right starting at $2^0$:</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-center text-xs font-mono border border-navy/10">
+            <tr class="bg-cream text-navy font-bold">
+              <td class="p-2 border">Position Value</td><td class="p-2 border">128</td><td class="p-2 border">64</td><td class="p-2 border">32</td><td class="p-2 border">16</td><td class="p-2 border">8</td><td class="p-2 border">4</td><td class="p-2 border">2</td><td class="p-2 border">1</td>
+            </tr>
+            <tr>
+              <td class="p-2 border font-bold text-navy">Bit (11001₂)</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">1</td><td class="p-2 border">1</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">1</td>
+            </tr>
+          </table>
+        </div>
+        <p class="text-xs">Add up the positions where there's a 1: $16 + 8 + 1 = 25$. This confirms our earlier successive-division result — binary and decimal are just two ways of writing the same number.</p>
+      </div>
+
+      <!-- 3.5 Floating Point -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">3.5 Representing Fractions: Floating Point Numbers</h2>
+        <p>
+          Whole numbers use fixed-point binary, but real-world values like $3.14$ or a bank balance of $Rs. 1250.75$ need decimals. Computers store these using the <strong>IEEE 754 Floating Point Standard</strong>, which splits a number into three parts inside a fixed number of bits (commonly 32 or 64):
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Sign bit:</strong> 1 bit — indicates positive (0) or negative (1).</li>
+          <li><strong>Exponent:</strong> Determines how far to shift the decimal (binary) point — similar to scientific notation.</li>
+          <li><strong>Mantissa (Significand):</strong> Stores the actual significant digits of the number.</li>
+        </ul>
+        <p class="text-xs">This is exactly why floating point math can sometimes show tiny rounding errors (e.g. 0.1 + 0.2 not being exactly 0.3 in some programming languages) — not every fraction can be perfectly represented in binary.</p>
+      </div>
+
+      <!-- 3.6 Encoding your name -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">3.6 Worked Example: Encoding the Word "HI"</h2>
+        <p>Using the ASCII table, every character maps to a fixed 7-bit decimal code:</p>
+        <div class="grid grid-cols-2 gap-4 text-center font-mono text-xs">
+          <div class="bg-cream p-4 rounded-xl border border-navy/5"><span class="block font-bold text-navy mb-1">'H'</span>Decimal: 72 <br>Binary: 01001000</div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5"><span class="block font-bold text-navy mb-1">'I'</span>Decimal: 73 <br>Binary: 01001001</div>
+        </div>
+        <p class="text-xs">So the text "HI" is really stored in memory as the byte sequence <code>01001000 01001001</code> — everything you type, every letter of Devanagari script, and every emoji ultimately becomes a string of bits like this.</p>
+      </div>
+
+      <!-- Nepali Helper Box -->
+      <div class="bg-navy text-cream p-8 rounded-2xl shadow-md border-l-8 border-olive space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Bilingual Conceptual Summary (नेपाली)</span>
+        <p class="text-sm leading-relaxed">
+          <strong>Number Base र ASCII को महत्त्व:</strong><br> <br>
+          • <strong>Hexadecimal (Base 16):</strong> बाइनरी कोड (01010111) धेरै लामो हुने हुनाले Hexadecimal (57) प्रयोग गरेर RAM address र Color codes (उदा: #0F172A) छोटकरीमा लेखिन्छ।<br> <br>
+          • <strong>ASCII vs Unicode:</strong> ASCII ले अंग्रेजी अक्षर मात्र (१२८ वटा) बुझ्छ, तर Unicode (UTF-8) ले देवनागरी (नेपाली) लगायत विश्वका सबै भाषाका अक्षर पहिचान गर्छ।
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function convertNumber() {
+      const val = parseInt(document.getElementById('decInput').value);
+      if (isNaN(val)) {
+        document.getElementById('binOut').innerText = '-';
+        document.getElementById('hexOut').innerText = '-';
+        document.getElementById('octOut').innerText = '-';
+        return;
+      }
+      document.getElementById('binOut').innerText = val.toString(2);
+      document.getElementById('hexOut').innerText = val.toString(16).toUpperCase();
+      document.getElementById('octOut').innerText = val.toString(8);
+    }
+  </script>
+
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+    © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>

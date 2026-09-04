@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 5: Logic Gates, System Modeling & Algorithms — Compendium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- MathJax Library for Rendering Mathematical Formulas & Symbols -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { cream: '#FAF7F2', navy: '#0F172A', olive: '#4A5D4E', muted: '#78716C' },
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-stone-900 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/80 border-b border-navy/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="p-2.5 rounded-xl bg-navy text-cream group-hover:bg-olive transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-navy">Compendium<span class="text-olive">.</span></span>
+      </a>
+      <nav class="flex items-center gap-8">
+        <a href="index.html" class="text-sm font-semibold text-muted hover:text-navy">Chapters</a>
+        <a href="about.html" class="text-sm font-semibold text-muted hover:text-navy">About Author</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 w-full">
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-navy mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Back to all chapters
+    </a>
+
+    <div class="border-b border-navy/10 pb-8 mb-10">
+      <span class="px-3 py-1 rounded-full bg-olive text-cream text-xs font-bold">Chapter 05</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-navy mt-4 mb-2">Logic Gates, System Modeling & Algorithms</h1>
+      <p class="text-muted">Boolean logic definitions, real-time gate simulation, combinational circuits, Data Flow Diagrams (DFDs), flowcharts, and control flow structures.</p>
+    </div>
+
+    <div class="space-y-12">
+
+      <!-- Real-time Interactive Logic Gate Simulator -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/10 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-navy/10 pb-4">
+          <div>
+            <h2 class="text-xl font-bold text-navy">Interactive Real-Time Universal Logic Gate Simulator</h2>
+            <p class="text-xs text-muted">Toggle inputs A and B to evaluate real-time logical outputs across fundamental gates:</p>
+          </div>
+          <span class="text-xs bg-olive text-cream px-3 py-1 rounded-full font-bold">Real-Time Circuit</span>
+        </div>
+        
+        <div class="flex items-center justify-center gap-8 py-2">
+          <button id="btnA" onclick="toggleInput('A')" class="px-8 py-4 rounded-xl bg-navy text-cream font-mono font-bold text-lg hover:bg-olive transition-colors shadow-md">Input A: 0</button>
+          <button id="btnB" onclick="toggleInput('B')" class="px-8 py-4 rounded-xl bg-navy text-cream font-mono font-bold text-lg hover:bg-olive transition-colors shadow-md">Input B: 0</button>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-mono pt-2">
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">AND (A · B)</span>
+            <span id="andVal" class="text-2xl font-extrabold text-navy">0</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">OR (A + B)</span>
+            <span id="orVal" class="text-2xl font-extrabold text-navy">0</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">XOR (A ⊕ B)</span>
+            <span id="xorVal" class="text-2xl font-extrabold text-navy">0</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">NAND (¬(A · B))</span>
+            <span id="nandVal" class="text-2xl font-extrabold text-navy">1</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">NOR (¬(A + B))</span>
+            <span id="norVal" class="text-2xl font-extrabold text-navy">1</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">XNOR (¬(A ⊕ B))</span>
+            <span id="xnorVal" class="text-2xl font-extrabold text-navy">1</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">NOT A (¬A)</span>
+            <span id="notAVal" class="text-2xl font-extrabold text-navy">1</span>
+          </div>
+          <div class="bg-cream p-4 rounded-xl border border-navy/5">
+            <span class="text-xs text-muted block mb-1">NOT B (¬B)</span>
+            <span id="notBVal" class="text-2xl font-extrabold text-navy">1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comprehensive Logic Gate Definitions -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-8 text-sm text-muted leading-relaxed">
+        <h2 class="text-3xl font-extrabold text-navy border-b border-navy/10 pb-4">5.1 Fundamental & Universal Logic Gates</h2>
+        
+        <!-- NOT Gate -->
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-olive/10 text-olive font-mono text-xs">01</span>
+            NOT Gate (Inverter)
+          </h3>
+          <p>
+            The <strong>NOT Gate</strong> accepts a single binary input and produces its logical complement. If the input is 1, the output becomes 0, and vice versa.
+          </p>
+          <p class="font-mono text-xs text-navy"><strong>Boolean Expression:</strong> $Y = \overline{A}$ or $Y = \neg A$</p>
+          <div class="overflow-x-auto">
+            <table class="w-48 text-center text-xs font-mono border border-navy/10">
+              <tr class="bg-cream text-navy font-bold">
+                <th class="p-2 border">Input A</th>
+                <th class="p-2 border">Output Y</th>
+              </tr>
+              <tr><td class="p-2 border">0</td><td class="p-2 border font-bold text-navy">1</td></tr>
+              <tr><td class="p-2 border">1</td><td class="p-2 border font-bold text-navy">0</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- AND Gate -->
+        <div class="space-y-3 pt-4 border-t border-navy/5">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-olive/10 text-olive font-mono text-xs">02</span>
+            AND Gate
+          </h3>
+          <p>
+            The <strong>AND Gate</strong> produces a High output (1) <em>only if all</em> of its inputs are High (1). It models logical conjunction.
+          </p>
+          <p class="font-mono text-xs text-navy"><strong>Boolean Expression:</strong> $Y = A \cdot B$</p>
+          <div class="overflow-x-auto">
+            <table class="w-64 text-center text-xs font-mono border border-navy/10">
+              <tr class="bg-cream text-navy font-bold">
+                <th class="p-2 border">A</th><th class="p-2 border">B</th><th class="p-2 border">Output Y</th>
+              </tr>
+              <tr><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">0</td></tr>
+              <tr><td class="p-2 border">0</td><td class="p-2 border">1</td><td class="p-2 border">0</td></tr>
+              <tr><td class="p-2 border">1</td><td class="p-2 border">0</td><td class="p-2 border">0</td></tr>
+              <tr><td class="p-2 border">1</td><td class="p-2 border">1</td><td class="p-2 border font-bold text-navy">1</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- OR Gate -->
+        <div class="space-y-3 pt-4 border-t border-navy/5">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-olive/10 text-olive font-mono text-xs">03</span>
+            OR Gate
+          </h3>
+          <p>
+            The <strong>OR Gate</strong> produces a High output (1) if <em>at least one</em> input is High (1). It models logical disjunction.
+          </p>
+          <p class="font-mono text-xs text-navy"><strong>Boolean Expression:</strong> $Y = A + B$</p>
+          <div class="overflow-x-auto">
+            <table class="w-64 text-center text-xs font-mono border border-navy/10">
+              <tr class="bg-cream text-navy font-bold">
+                <th class="p-2 border">A</th><th class="p-2 border">B</th><th class="p-2 border">Output Y</th>
+              </tr>
+              <tr><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">0</td></tr>
+              <tr><td class="p-2 border">0</td><td class="p-2 border">1</td><td class="p-2 border font-bold text-navy">1</td></tr>
+              <tr><td class="p-2 border">1</td><td class="p-2 border">0</td><td class="p-2 border font-bold text-navy">1</td></tr>
+              <tr><td class="p-2 border">1</td><td class="p-2 border">1</td><td class="p-2 border font-bold text-navy">1</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- NAND Gate -->
+        <div class="space-y-3 pt-4 border-t border-navy/5">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-olive/10 text-olive font-mono text-xs">04</span>
+            NAND Gate (Universal Gate)
+          </h3>
+          <p>
+            A <strong>NAND Gate</strong> produces an output that is the inverse of an AND gate. It outputs 0 <em>only when both inputs are 1</em>. Because any Boolean function can be implemented using exclusively NAND gates, it is classified as a <strong>Universal Gate</strong>.
+          </p>
+          <p class="font-mono text-xs text-navy"><strong>Boolean Expression:</strong> $Y = \overline{A \cdot B}$</p>
+        </div>
+
+        <!-- NOR Gate -->
+        <div class="space-y-3 pt-4 border-t border-navy/5">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-olive/10 text-olive font-mono text-xs">05</span>
+            NOR Gate (Universal Gate)
+          </h3>
+          <p>
+            A <strong>NOR Gate</strong> produces an output that is the inverse of an OR gate. It outputs 1 <em>only when both inputs are 0</em>. Like NAND, it is a <strong>Universal Gate</strong>.
+          </p>
+          <p class="font-mono text-xs text-navy"><strong>Boolean Expression:</strong> $Y = \overline{A + B}$</p>
+        </div>
+
+        <!-- XOR & XNOR Gate -->
+        <div class="space-y-3 pt-4 border-t border-navy/5">
+          <h3 class="text-xl font-bold text-navy flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-olive/10 text-olive font-mono text-xs">06</span>
+            XOR & XNOR Gates
+          </h3>
+          <p>
+            The <strong>XOR (Exclusive-OR) Gate</strong> outputs 1 if and only if the inputs are <em>different</em> ($Y = A \oplus B = A\overline{B} + \overline{A}B$). The <strong>XNOR Gate</strong> outputs 1 when the inputs are <em>identical</em>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Combinational Logic Example: Half-Adder -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-4 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">5.2 Combinational Logic: The Binary Half-Adder</h2>
+        <p>
+          Combining logic gates produces functional digital circuits. The <strong>Half-Adder</strong> takes two single binary inputs ($A$ and $B$) and calculates their arithmetic sum, generating a <strong>Sum ($S$)</strong> bit and a <strong>Carry ($C$)</strong> bit.
+        </p>
+        <div class="bg-cream p-4 rounded-xl font-mono text-xs text-navy space-y-2">
+          <p>• <strong>Sum Bit Expression:</strong> $S = A \oplus B$ (XOR Gate)</p>
+          <p>• <strong>Carry Bit Expression:</strong> $C = A \cdot B$ (AND Gate)</p>
+        </div>
+      </div>
+
+      <!-- 5.2b Full Adder -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-4 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">5.2b From Half-Adder to Full-Adder</h2>
+        <p>
+          A Half-Adder can only add two single bits. To add binary numbers with many digits, we need a <strong>Full-Adder</strong>, which also accepts a <strong>Carry-In ($C_{in}$)</strong> from the previous column — just like carrying a "1" when adding multi-digit numbers by hand.
+        </p>
+        <div class="bg-cream p-4 rounded-xl font-mono text-xs text-navy space-y-2">
+          <p>• <strong>Sum:</strong> $S = A \oplus B \oplus C_{in}$</p>
+          <p>• <strong>Carry-Out:</strong> $C_{out} = (A \cdot B) + (C_{in} \cdot (A \oplus B))$</p>
+        </div>
+        <p class="text-xs">Chaining eight Full-Adders together (a "Ripple-Carry Adder") is literally how a real CPU's ALU adds two 8-bit numbers.</p>
+      </div>
+
+      <!-- 5.2c Real world logic -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-4 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">5.2c Logic Gates in Everyday Life</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>AND example:</strong> A car only starts if the key is turned <em>AND</em> the seatbelt is fastened.</li>
+          <li><strong>OR example:</strong> A room light turns on if switch A <em>OR</em> switch B (a two-way switch) is flipped up.</li>
+          <li><strong>NOT example:</strong> A refrigerator light turns on when the door is <em>NOT</em> closed.</li>
+        </ul>
+      </div>
+
+      <!-- Flowchart Symbols -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">5.3b Flowchart Symbols &amp; A Worked Example</h2>
+        <p>Before writing code, programmers often sketch a <strong>flowchart</strong> — a visual diagram of an algorithm's logic using standard shapes:</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs font-mono pt-2">
+          <div class="bg-cream p-3 rounded-full border border-navy/10">Oval = Start/End</div>
+          <div class="bg-cream p-3 rounded-lg border border-navy/10">Rectangle = Process</div>
+          <div class="bg-cream p-3 border border-navy/10" style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);">Diamond = Decision</div>
+          <div class="bg-cream p-3 rounded-lg border border-navy/10">Parallelogram = Input/Output</div>
+        </div>
+        <p class="text-xs">Example task: "Check if a number is even or odd" → Start → Input Number → Decision: Is (Number % 2 == 0)? → Yes: Print "Even" / No: Print "Odd" → End.</p>
+        <div class="py-4 flex flex-col items-center">
+          <svg class="w-full max-w-xs h-auto" viewBox="0 0 240 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="20" rx="60" ry="18" fill="#0F172A"/>
+            <text x="120" y="25" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">Start</text>
+            <path d="M120 38 L120 60" stroke="#78716C" stroke-width="2" marker-end="url(#a5)"/>
+            <rect x="45" y="60" width="150" height="35" rx="6" fill="#4A5D4E"/>
+            <text x="120" y="82" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">Input: Number</text>
+            <path d="M120 95 L120 120" stroke="#78716C" stroke-width="2" marker-end="url(#a5)"/>
+            <polygon points="120,115 190,155 120,195 50,155" fill="#6B8E23"/>
+            <text x="120" y="152" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" text-anchor="middle">Number % 2</text>
+            <text x="120" y="164" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" text-anchor="middle">== 0 ?</text>
+            <path d="M50 155 L15 155 L15 230 L95 230" stroke="#78716C" stroke-width="2" fill="none" marker-end="url(#a5)"/>
+            <text x="30" y="148" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">No</text>
+            <rect x="20" y="230" width="80" height="32" rx="6" fill="#78716C"/>
+            <text x="60" y="250" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" text-anchor="middle">Print "Odd"</text>
+            <path d="M190 155 L225 155 L225 230 L145 230" stroke="#78716C" stroke-width="2" fill="none" marker-end="url(#a5)"/>
+            <text x="200" y="148" fill="#0F172A" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Yes</text>
+            <rect x="140" y="230" width="90" height="32" rx="6" fill="#78716C"/>
+            <text x="185" y="250" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" text-anchor="middle">Print "Even"</text>
+            <path d="M60 262 L60 280 L185 280 L185 262" stroke="#78716C" stroke-width="2" fill="none"/>
+            <path d="M120 280 L120 292" stroke="#78716C" stroke-width="2" marker-end="url(#a5)"/>
+            <ellipse cx="120" cy="305" rx="50" ry="15" fill="#0F172A"/>
+            <text x="120" y="310" fill="#FAF7F2" font-family="Plus Jakarta Sans" font-weight="700" font-size="10" text-anchor="middle">End</text>
+            <defs><marker id="a5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#78716C"/></marker></defs>
+          </svg>
+          <p class="text-xs text-muted mt-3 font-medium">Diagram 5.2: Flowchart to check if a number is Even or Odd</p>
+        </div>
+      </div>
+
+      <!-- System Modeling: Data Flow Diagrams (DFD) -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">5.3 Systems Analysis: Data Flow Diagrams (DFDs)</h2>
+        <p>
+          A <strong>Data Flow Diagram (DFD)</strong> visually maps how data moves through an information system, detailing inputs, processing steps, storage locations, and outputs without describing hardware details.
+        </p>
+        
+        <h3 class="text-lg font-bold text-navy">Standard DFD Notation Symbols</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div class="border border-navy/10 p-4 rounded-xl bg-cream/30">
+            <span class="font-bold text-navy block mb-1">1. External Entity (Square/Rectangle)</span>
+            <p class="text-xs">Represents external sources or destinations of data (e.g., Student, Bank API).</p>
+          </div>
+          <div class="border border-navy/10 p-4 rounded-xl bg-cream/30">
+            <span class="font-bold text-navy block mb-1">2. Process (Circle / Rounded Box)</span>
+            <p class="text-xs">Transforms incoming data flows into outgoing data flows (e.g., Calculate Grade).</p>
+          </div>
+          <div class="border border-navy/10 p-4 rounded-xl bg-cream/30">
+            <span class="font-bold text-navy block mb-1">3. Data Store (Open Rectangle)</span>
+            <p class="text-xs">Repositories where data is held at rest (e.g., Student Database, Logs).</p>
+          </div>
+          <div class="border border-navy/10 p-4 rounded-xl bg-cream/30">
+            <span class="font-bold text-navy block mb-1">4. Data Flow (Directed Arrow)</span>
+            <p class="text-xs">Indicates the direction of data movement between entities, processes, and stores.</p>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-navy pt-4">DFD Hierarchy Levels</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Context Diagram (Level 0):</strong> Abstract overview representing the entire system as a single process surrounded by external entities.</li>
+          <li><strong>Level 1 DFD:</strong> Decomposes the single Level 0 process into major sub-processes and explicitly shows key data stores.</li>
+        </ul>
+      </div>
+
+      <!-- Algorithms & Flowcharting -->
+      <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
+        <h2 class="text-2xl font-bold text-navy">5.4 Algorithms & Control Structures</h2>
+        <p>An <strong>algorithm</strong> is a finite sequence of step-by-step instructions designed to solve a logical or mathematical problem.</p>
+
+        <h3 class="text-lg font-bold text-navy">Core Control Constructs (Python & Pseudocode)</h3>
+        <div class="bg-navy text-cream p-6 rounded-xl font-mono text-xs space-y-4">
+<div>
+<span class="text-olive font-bold"># 1. Sequential Execution</span>
+<p>length = 10</p>
+<p>width = 5</p>
+<p>area = length * width</p>
+</div>
+<div>
+<span class="text-olive font-bold"># 2. Conditional Selection (If-Else)</span>
+<p>if score >= 40:</p>
+<p class="pl-4">print("Status: Passed")</p>
+<p>else:</p>
+<p class="pl-4">print("Status: Retake Required")</p>
+</div>
+<div>
+<span class="text-olive font-bold"># 3. Iteration / Looping (While Construct)</span>
+<p>counter = 1</p>
+<p>while counter <= 5:</p>
+<p class="pl-4">print("Iteration count:", counter)</p>
+<p class="pl-4">counter += 1</p>
+</div>
+        </div>
+      </div>
+
+      <!-- Nepali Helper Box -->
+      <div class="bg-navy text-cream p-8 rounded-2xl shadow-md border-l-8 border-olive space-y-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-olive">Bilingual Conceptual Summary (नेपाली)</span>
+        <p class="text-sm leading-relaxed">
+          <strong>Logic Gates र DFD को वास्तविक उदाहरण:</strong><br> <br>
+          • <strong>Universal Gate (NAND/NOR):</strong> NAND gate मात्र प्रयोग गरेर NOT, AND, र OR gate बनाउन सकिन्छ, त्यसैले यसलाई Universal Gate भनिन्छ।<br> <br>
+          • <strong>DFD (डाटा फ्लो डाइग्राम):</strong> कुनै पनि प्रोग्राम बनाउनु अघि डाटा कसरी प्रवाह हुन्छ भनेर नक्सांकन गर्ने तरिका DFD हो। जस्तै, फारम भरेपछि (Input) डाटाबेस (Data Store) मा बस्छ र Result (Output) स्क्रिनमा देखिन्छ।<br> <br>
+          • <strong>Flowchart (प्रवाह चित्र):</strong> कोड लेख्नु अघि, समस्या समाधान गर्ने तरिका चित्रमा देखाउने माध्यम हो। Diamond आकारले "निर्णय" (Yes/No) जनाउँछ।
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let stateA = 0;
+    let stateB = 0;
+
+    function toggleInput(gate) {
+      if(gate === 'A') {
+        stateA = stateA === 0 ? 1 : 0;
+        document.getElementById('btnA').innerText = `Input A: ${stateA}`;
+      } else {
+        stateB = stateB === 0 ? 1 : 0;
+        document.getElementById('btnB').innerText = `Input B: ${stateB}`;
+      }
+      
+      const andRes = stateA && stateB ? 1 : 0;
+      const orRes = stateA || stateB ? 1 : 0;
+      const xorRes = stateA !== stateB ? 1 : 0;
+
+      document.getElementById('andVal').innerText = andRes;
+      document.getElementById('orVal').innerText = orRes;
+      document.getElementById('xorVal').innerText = xorRes;
+      document.getElementById('nandVal').innerText = andRes === 1 ? 0 : 1;
+      document.getElementById('norVal').innerText = orRes === 1 ? 0 : 1;
+      document.getElementById('xnorVal').innerText = xorRes === 1 ? 0 : 1;
+      document.getElementById('notAVal').innerText = stateA === 1 ? 0 : 1;
+      document.getElementById('notBVal').innerText = stateB === 1 ? 0 : 1;
+    }
+  </script>
+
+  <footer class="border-t border-navy/10 py-8 text-center text-xs text-muted">
+     © 2026 Prince Adhikari. All Rights Reserved. Compendium Educational Platform.
+  </footer>
+</body>
+</html>
