@@ -77,7 +77,7 @@
       <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
         <h2 class="text-2xl font-bold text-navy">3.1 Positional Number Systems</h2>
         <p>
-          Computers operate on binary physical states (high/low voltages represented as 1 and 0). Data interpretation depends on positional base mathematics where a digit at position $n$ carries a weight of $\text{Base}^n$.
+          Computers operate on binary physical states (high/low voltages represented as 1 and 0). Data interpretation depends on positional base mathematics where a digit at position <i>n</i> carries a weight of <b>Base<sup><i>n</i></sup></b>.
         </p>
 
         <h3 class="text-lg font-bold text-navy">Step-by-Step Conversion: Decimal to Binary (Successive Division)</h3>
@@ -88,7 +88,7 @@
           <p> 6 ÷ 2 =  3, Remainder = 0</p>
           <p> 3 ÷ 2 =  1, Remainder = 1</p>
           <p> 1 ÷ 2 =  0, Remainder = 1 (MSB)</p>
-          <p class="font-bold text-olive pt-2">Result (Read bottom to top): 11001₂</p>
+          <p class="font-bold text-olive pt-2">Result (Read bottom to top): 11001<sub>2</sub></p>
         </div>
 
         <h2 class="text-2xl font-bold text-navy pt-4">3.2 Signed Integer Representation: 2's Complement</h2>
@@ -96,15 +96,15 @@
           To represent negative numbers without requiring separate subtractive circuit hardware, CPUs use <strong>Two's Complement</strong>. To negate a binary number:
         </p>
         <ol class="list-decimal pl-5 space-y-2">
-          <li>Start with the positive binary value (e.g., $+5$ in 8-bit = <code>00000101</code>).</li>
+          <li>Start with the positive binary value (e.g., +5 in 8-bit = <code>00000101</code>).</li>
           <li>Invert all bits (1's Complement: <code>11111010</code>).</li>
-          <li>Add $1$ to the LSB (2's Complement: <code>11111011</code> = $-5$).</li>
+          <li>Add 1 to the LSB (2's Complement: <code>11111011</code> = -5).</li>
         </ol>
 
         <h2 class="text-2xl font-bold text-navy pt-4">3.3 Character Encoding Standards: ASCII vs. Unicode</h2>
         <p>Text values are represented using standard numeric encoding maps:</p>
         <ul class="list-disc pl-5 space-y-2">
-          <li><strong>ASCII (American Standard Code for Information Interchange):</strong> 7-bit code mapping 128 standard English characters, control codes, and numbers (e.g., 'A' = 65 / <code>01000001₂</code>).</li>
+          <li><strong>ASCII (American Standard Code for Information Interchange):</strong> 7-bit code mapping 128 standard English characters, control codes, and numbers (e.g., 'A' = 65 / <code>01000001<sub>2</sub></code>).</li>
           <li><strong>Unicode (UTF-8 / UTF-16):</strong> Variable-width encoding supporting over 140,000 global characters, including Devanagari (Nepali script) and emojis, maintaining backward compatibility with ASCII.</li>
         </ul>
       </div>
@@ -112,25 +112,25 @@
       <!-- 3.4 Binary to Decimal example -->
       <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
         <h2 class="text-2xl font-bold text-navy">3.4 Reading Binary: From Bits Back to Decimal</h2>
-        <p>Going the other way, each binary digit (bit) is worth a power of 2 based on its position, counting from the right starting at $2^0$:</p>
+        <p>Going the other way, each binary digit (bit) is worth a power of 2 based on its position, counting from the right starting at 2<sup>0</sup>:</p>
         <div class="overflow-x-auto">
           <table class="w-full text-center text-xs font-mono border border-navy/10">
             <tr class="bg-cream text-navy font-bold">
               <td class="p-2 border">Position Value</td><td class="p-2 border">128</td><td class="p-2 border">64</td><td class="p-2 border">32</td><td class="p-2 border">16</td><td class="p-2 border">8</td><td class="p-2 border">4</td><td class="p-2 border">2</td><td class="p-2 border">1</td>
             </tr>
             <tr>
-              <td class="p-2 border font-bold text-navy">Bit (11001₂)</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">1</td><td class="p-2 border">1</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">1</td>
+              <td class="p-2 border font-bold text-navy">Bit (11001<sub>2</sub>)</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">1</td><td class="p-2 border">1</td><td class="p-2 border">0</td><td class="p-2 border">0</td><td class="p-2 border">1</td>
             </tr>
           </table>
         </div>
-        <p class="text-xs">Add up the positions where there's a 1: $16 + 8 + 1 = 25$. This confirms our earlier successive-division result — binary and decimal are just two ways of writing the same number.</p>
+        <p class="text-xs">Add up the positions where there's a 1: 16 + 8 + 1 = 25. This confirms our earlier successive-division result — binary and decimal are just two ways of writing the same number.</p>
       </div>
 
       <!-- 3.5 Floating Point -->
       <div class="bg-white p-8 rounded-2xl border border-navy/5 shadow-sm space-y-6 text-sm text-muted leading-relaxed">
         <h2 class="text-2xl font-bold text-navy">3.5 Representing Fractions: Floating Point Numbers</h2>
         <p>
-          Whole numbers use fixed-point binary, but real-world values like $3.14$ or a bank balance of $Rs. 1250.75$ need decimals. Computers store these using the <strong>IEEE 754 Floating Point Standard</strong>, which splits a number into three parts inside a fixed number of bits (commonly 32 or 64):
+          Whole numbers use fixed-point binary, but real-world values like 3.14 or a bank balance of Rs. 1250.75 need decimals. Computers store these using the <strong>IEEE 754 Floating Point Standard</strong>, which splits a number into three parts inside a fixed number of bits (commonly 32 or 64):
         </p>
         <ul class="list-disc pl-5 space-y-2">
           <li><strong>Sign bit:</strong> 1 bit — indicates positive (0) or negative (1).</li>
